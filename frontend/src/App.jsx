@@ -5,7 +5,6 @@ import ClientSideBar from './components/layout/ClientSideBar';
 import CandidateSideBar from './components/layout/CandidateSideBar';
 import AdminSideBar from './components/layout/AdminSideBar';
 import DashboardLayout from './components/layout/DashboardLayout';
-import ChatBot from './components/common/ChatBot';
 
 function App() {
   const location = useLocation();
@@ -20,39 +19,19 @@ function App() {
   const isAdmin = location.pathname.startsWith('/admin');
 
   if (isLogin || isRegister || isInterview || isForgotPassword || isResetPassword) {
-    return (
-      <>
-        <Outlet />
-        <ChatBot />
-      </>
-    );
+    return <Outlet />;
   }
 
   if (isClient) {
-    return (
-      <>
-        <DashboardLayout sidebar={ClientSideBar} title="Client Portal" />
-        <ChatBot />
-      </>
-    );
+    return <DashboardLayout sidebar={ClientSideBar} title="Client Portal" />;
   }
 
   if (isCandidate) {
-    return (
-      <>
-        <DashboardLayout sidebar={CandidateSideBar} title="Candidate Portal" />
-        <ChatBot />
-      </>
-    );
+    return <DashboardLayout sidebar={CandidateSideBar} title="Candidate Portal" />;
   }
 
   if (isAdmin) {
-    return (
-      <>
-        <DashboardLayout sidebar={AdminSideBar} title="Admin Portal" />
-        <ChatBot />
-      </>
-    );
+    return <DashboardLayout sidebar={AdminSideBar} title="Admin Portal" />;
   }
 
   return (
@@ -60,7 +39,6 @@ function App() {
       <Header />
       <Outlet />
       <Footer />
-      <ChatBot />
     </>
   );
 }
